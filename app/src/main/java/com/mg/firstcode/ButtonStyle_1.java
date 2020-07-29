@@ -50,6 +50,7 @@ public class ButtonStyle_1 extends AppCompatActivity {
                 //When you click the prev button, it resets and draws the button.
                 lpb_buttonlist.addBottomPageButton(max_page,now_page);
                 text_page.setText(now_page+"Page");
+                viewPager2.setCurrentItem(now_page-1);
 //                Toast.makeText(getApplicationContext(), ""+now_page, Toast.LENGTH_SHORT).show();
                 //Write source code for there page
                 //...
@@ -58,6 +59,7 @@ public class ButtonStyle_1 extends AppCompatActivity {
             @Override
             public void onPageCenter(int now_page) {
                 text_page.setText(now_page+"Page");
+                viewPager2.setCurrentItem(now_page-1);
 //                Toast.makeText(getApplicationContext(), ""+now_page, Toast.LENGTH_SHORT).show();
                 //Write source code for there page
                 //...
@@ -69,6 +71,7 @@ public class ButtonStyle_1 extends AppCompatActivity {
                 //When you click the next button, it resets and draws the button.
                 lpb_buttonlist.addBottomPageButton(max_page,now_page);
                 text_page.setText(now_page+"Page");
+                viewPager2.setCurrentItem(now_page-1);  
 //                Toast.makeText(getApplicationContext(), ""+now_page, Toast.LENGTH_SHORT).show();
                 //Write source code for there page
                 //...
@@ -76,7 +79,6 @@ public class ButtonStyle_1 extends AppCompatActivity {
         });
 
         viewPager2 = findViewById(R.id.pager);
-
         ArrayList<DataPage> list = new ArrayList<>();
         list.add(new DataPage(android.R.color.black,"1 Page"));
         list.add(new DataPage(android.R.color.holo_red_light, "2 Page"));
@@ -95,14 +97,17 @@ public class ButtonStyle_1 extends AppCompatActivity {
             public void handleMessage(@NonNull Message msg) {
                 if(p==0){
                     viewPager2.setCurrentItem(0);
+                    text_page.setText((p+1)+"");
                     p++;
                 }
                 else if(p==1){
                     viewPager2.setCurrentItem(1);
+                    text_page.setText((p+1)+"");
                     p++;
                 }
                 else if(p==2){
                     viewPager2.setCurrentItem(2);
+                    text_page.setText((p+1)+"");    
                     p=0;
                 }
             }
@@ -117,12 +122,10 @@ public class ButtonStyle_1 extends AppCompatActivity {
 
                     Message message = handler.obtainMessage();
 
-
-
                     try{
-
-                        Thread.sleep(2000);
                         handler.sendEmptyMessage(0);
+                        Thread.sleep(2000);
+
 
                     }
                     catch(Exception e){
@@ -148,9 +151,6 @@ public class ButtonStyle_1 extends AppCompatActivity {
 //                    viewPager2.setOrientation(ViewPager2.ORIENTATION_VERTICAL);
 //                }
 //            }
-//        });
-
-
 
     }
 }

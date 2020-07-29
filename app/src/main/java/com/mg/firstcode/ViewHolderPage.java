@@ -19,7 +19,7 @@ private RelativeLayout rl_layout;
         rl_layout = itemView.findViewById(R.id.rl_layout);
         }
 
-public void onBind(DataPage data){
+        public void onBind(DataPage data){
         this.data = data;
 
         tv_title.setText(data.getTitle());
