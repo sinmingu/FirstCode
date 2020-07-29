@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="0.8"
+            android:orientation="vertical"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Coding Study"
+                android:id="@+id/text1"
+                android:textColor="#000000"
+                android:background="#ffffff"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:paddingLeft="20dp"
+                android:layout_weight="0.7"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="첫번째 보낼값 "
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:id="@+id/edit_id"
+                        android:hint="입력"
+                        android:textColor="#000000"
+                        android:textSize="13dp"
+                        android:gravity="center"
+                        android:layout_weight="0.7"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_weight="0.3"
+                        android:text="두번째 보낼값"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:layout_width="wrap_content"
+                        android:id="@+id/edit_pw"
+                        android:hint="입력"
+                        android:textSize="13dp"
+                        android:layout_weight="0.7"
+                        android:textColor="#000000"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:background="#ffffff"
+                    android:text="Data Intent"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/btn_login"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.2"
+            android:gravity="bottom"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="핸들러"
+                    android:id="@+id/btn_test1"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="쓰레드"
+                    android:id="@+id/btn_test2"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="리시버"
+                    android:id="@+id/btn_test3"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="서비스"
+                    android:id="@+id/btn_test4"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="알람매니저"
+                    android:id="@+id/btn_test5"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="이미지"
+                    android:id="@+id/btn_test6"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="리사이클뷰"
+                    android:id="@+id/btn_test7"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:layout_weight="1"
+                    android:text="뷰"
+                    android:id="@+id/btn_test8"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ServiceActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="#ffffff"
+            android:text="Service 시작"
+            android:id="@+id/start_service"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="#ffffff"
+            android:text="Service 끝"
+            android:id="@+id/end_service"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="#ffffff"
+            android:text="IntentService 시작"
+            android:textColor="#000000"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:id="@+id/start_IntentService"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:background="#ffffff"
+            android:text="ForegroundService 시작"
+            android:textColor="#000000"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:id="@+id/start_groundService"
+            android:layout_height="wrap_content"/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>
