@@ -14,12 +14,19 @@
         android:layout_weight="0.9"
         android:layout_height="wrap_content">
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/pager"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <TextView
             android:layout_width="match_parent"
             android:gravity="center"
             android:textColor="#000000"
             android:text="1Page"
             android:textSize="30dp"
+            android:layout_weight="1"
             android:id="@+id/text_page"
             android:layout_height="wrap_content"/>
 

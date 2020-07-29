@@ -23,6 +23,7 @@ public class HandlerActivity extends AppCompatActivity {
     int count = 0;
     int handler_status = 0;
     Handler handler;
+    int time_count = 10;
 
     Handler Nohandler;
     @Override
@@ -35,8 +36,6 @@ public class HandlerActivity extends AppCompatActivity {
         btn_handler2= (Button)findViewById(R.id.btn_handler2);
         btn_handler3 = (Button)findViewById(R.id.btn_handler3);
         btn_handler4 = (Button)findViewById(R.id.btn_handler4);
-
-
 
         handler = new Handler(){
 
@@ -141,7 +140,6 @@ public class HandlerActivity extends AppCompatActivity {
 //            }
 //        });
 
-
 //         핸들러 첫번째 값 전송
         btn_handler.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,10 +176,10 @@ public class HandlerActivity extends AppCompatActivity {
         public void run() {
 
             while(status == 0){
+
                 Log.d("Handler", "핸들러 작동중"+count);
 
                 count++;
-
                 // 메시지 얻어오기
                 Message message = handler.obtainMessage();
                 message.what = 0;

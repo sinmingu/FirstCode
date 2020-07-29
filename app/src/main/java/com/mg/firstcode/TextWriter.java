@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -40,6 +42,17 @@ public class TextWriter extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_text_writer);
+
+        //Sound 재생
+        SoundPool soundPool;
+        int [] sounds;
+
+        soundPool = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+        sounds = new int[10];
+        sounds[0] = soundPool.load(this, R.raw.mario, 1);
+
+
+        soundPool.play( sounds[0],1,1,1,0,1);
 
         btn_test1 = (Button)findViewById(R.id.btn_test1);
         btn_test2 = (Button)findViewById(R.id.btn_test2);
@@ -235,6 +248,10 @@ public class TextWriter extends AppCompatActivity {
                     score++;
                     text_score.setText(score+"");
                 }
+                else{
+                    score--;
+                    text_score.setText(score+"");
+                }
             }
         });
         imageView2.setOnClickListener(new View.OnClickListener() {
@@ -243,6 +260,10 @@ public class TextWriter extends AppCompatActivity {
                 user_status = 2;
                 if(rnd == 2) {
                     score++;
+                    text_score.setText(score+"");
+                }
+                else{
+                    score--;
                     text_score.setText(score+"");
                 }
             }
@@ -255,6 +276,10 @@ public class TextWriter extends AppCompatActivity {
                     score++;
                     text_score.setText(score+"");
                 }
+                else{
+                    score--;
+                    text_score.setText(score+"");
+                }
             }
         });
         imageView4.setOnClickListener(new View.OnClickListener() {
@@ -263,6 +288,10 @@ public class TextWriter extends AppCompatActivity {
                 user_status = 4;
                 if(rnd == 4) {
                     score++;
+                    text_score.setText(score+"");
+                }
+                else{
+                    score--;
                     text_score.setText(score+"");
                 }
             }
@@ -275,6 +304,10 @@ public class TextWriter extends AppCompatActivity {
                     score++;
                     text_score.setText(score+"");
                 }
+                else{
+                    score--;
+                    text_score.setText(score+"");
+                }
             }
         });
         imageView6.setOnClickListener(new View.OnClickListener() {
@@ -283,6 +316,10 @@ public class TextWriter extends AppCompatActivity {
                 user_status = 6;
                 if(rnd == 6) {
                     score++;
+                    text_score.setText(score+"");
+                }
+                else{
+                    score--;
                     text_score.setText(score+"");
                 }
             }
@@ -295,6 +332,10 @@ public class TextWriter extends AppCompatActivity {
                     score++;
                     text_score.setText(score+"");
                 }
+                else{
+                    score--;
+                    text_score.setText(score+"");
+                }
             }
         });
         imageView8.setOnClickListener(new View.OnClickListener() {
@@ -305,6 +346,10 @@ public class TextWriter extends AppCompatActivity {
                     score++;
                     text_score.setText(score+"");
                 }
+                else{
+                    score--;
+                    text_score.setText(score+"");
+                }
             }
         });
         imageView9.setOnClickListener(new View.OnClickListener() {
@@ -313,6 +358,10 @@ public class TextWriter extends AppCompatActivity {
                 user_status = 9;
                 if(rnd == 9) {
                     score++;
+                    text_score.setText(score+"");
+                }
+                else{
+                    score--;
                     text_score.setText(score+"");
                 }
             }
