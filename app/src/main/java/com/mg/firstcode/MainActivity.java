@@ -19,6 +19,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
     // 테스트 클릭버튼
     Button btn_test1, btn_test2, btn_test3, btn_test4, btn_test5, btn_test6, btn_test7, btn_test8;
@@ -29,10 +32,15 @@ public class MainActivity extends AppCompatActivity {
     //확인완료 버튼
     Button btn_login;
 
+    //일일 날씨
+    private String url = "http://api.openweathermap.org";
+    private String key = "1966fce57124a1e39ecef2d1eaeb7c0b";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btn_test1 = (Button)findViewById(R.id.btn_test1);
         btn_test2 = (Button)findViewById(R.id.btn_test2);
         btn_test3 = (Button)findViewById(R.id.btn_test3);
@@ -61,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
 //                new BackgroundTask_Exam().execute();
             }
         });
-
         btn_test2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
         btn_test3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-
         btn_test4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         btn_test6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
         //리사이클뷰
         btn_test7.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +133,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
         btn_test8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 
