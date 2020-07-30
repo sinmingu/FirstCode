@@ -5,14 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.util.Calendar;
+
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class BroadActivity extends AppCompatActivity {
     BroadcastReceiver br;
     Button btn_start, btn_start2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +67,7 @@ public class BroadActivity extends AppCompatActivity {
                 sendOrderedBroadcast(intent3, null);
             }
         });
+
     }
 
     @Override
@@ -61,4 +75,5 @@ public class BroadActivity extends AppCompatActivity {
         super.onDestroy();
         this.unregisterReceiver(br);
     }
+
 }

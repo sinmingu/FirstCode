@@ -38,7 +38,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
     // 테스트 클릭버튼
-    Button btn_test1, btn_test2, btn_test3, btn_test4, btn_test5, btn_test6, btn_test7, btn_test8;
+    Button btn_test1, btn_test2, btn_test3, btn_test4, btn_test5, btn_test6, btn_test7, btn_test8, text_btn;
     //결과 화면 텍스트
     TextView text1;
     //1번째, 2번째 입력란
@@ -63,10 +63,13 @@ public class MainActivity extends AppCompatActivity {
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
 
-    //코로나19
+    //코로나19 (지역별 확진자수)
+    private String location_url = "http://openapi.data.go.kr/";
+    private String location_key = "FhIbqBYEHWDmIgHDufkWFiRccTmu8Lavedlo%2FnccvmChSLG1QY%2Bd0lQoyYX%2B55JyA34U75DrTvcUt5feJRZ9Ng%3D%3D";
+
+    //코로나19 (전체 사람들의 수)
     private String covid19_url = "http://openapi.data.go.kr/";
     private String covid19_key = "FhIbqBYEHWDmIgHDufkWFiRccTmu8Lavedlo%2FnccvmChSLG1QY%2Bd0lQoyYX%2B55JyA34U75DrTvcUt5feJRZ9Ng%3D%3D";
-
 
     //일일 날씨
     private String url = "https://api.openweathermap.org";
@@ -93,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
         btn_test6 = (Button)findViewById(R.id.btn_test6);
         btn_test7 = (Button)findViewById(R.id.btn_test7);
         btn_test8 = (Button)findViewById(R.id.btn_test8);
+        text_btn = (Button)findViewById(R.id.text_btn);
 
         text_corona = (TextView)findViewById(R.id.text_corona);
 
@@ -194,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
         Call<Covid19_Repo> Covid19_Repo = covid19_interface.get_covid19(covid19_key,pageNo, numOfRows,startCreateDt, endCreateDt, _type);
         Covid19_Repo.enqueue(new Callback<com.mg.firstcode.Covid19_Repo>() {
             @Override
-            public void onResponse(Call<com.mg.firstcode.Covid19_Repo> call, Response<com.mg.firstcode.Covid19_Repo> response) {
+            public void onResponse(Call<Covid19_Repo> call, Response<com.mg.firstcode.Covid19_Repo> response) {
                 if(response.isSuccessful()){
                     com.mg.firstcode.Covid19_Repo covid19_Repo = response.body();
 
@@ -221,6 +225,41 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<com.mg.firstcode.Covid19_Repo> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"코로나 데이터 불러오기 실패",Toast.LENGTH_SHORT).show();
+            }
+        });
+        text_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //-------------------------------------지역코로나----------------------------------
+                int pageNo = 1;
+                int numOfRows = 10;
+                int startCreateDt = Integer.parseInt(num3);
+                int endCreateDt = Integer.parseInt(num3);
+                String _type = "json";
+                //서버의 json 응답을 간단하게 변환하도록 해주는 작업
+                Retrofit Lo_client = new Retrofit.Builder().baseUrl(location_url).addConverterFactory(GsonConverterFactory.create()).client(createOkHttpClient()).build();
+                //인터페이스
+                Location_Interface location_interface = Lo_client.create(Location_Interface.class);
+
+                //Call
+                Call<Location_Repo> location_Repo = location_interface.get_Location(location_key,pageNo, numOfRows,startCreateDt, endCreateDt, _type);
+                location_Repo.enqueue(new Callback<Location_Repo>() {
+                    @Override
+                    public void onResponse(Call<Location_Repo> call, Response<Location_Repo> response) {
+                        if(response.isSuccessful()){
+                            Location_Repo repo = response.body();
+                            int defCnt = repo.getResponse().getBody().getItems().getItem().get(0).getDefCnt();
+
+                            Toast.makeText(getApplicationContext(), "cc", Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<Location_Repo> call, Throwable t) {
+                        Toast.makeText(getApplicationContext(),"지역 데이터 불러오기 실패",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 
@@ -320,8 +359,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
 
     // 실습코드 2
     class Thread_Exam1 implements Runnable{
