@@ -45,7 +45,6 @@ public class RecyleView extends AppCompatActivity {
         // Example Data
         foodInfoArrayList.add(new FoodInfo(R.drawable.book, "임시 데이터"));
 
-
         final MyAdapter myAdapter = new MyAdapter(foodInfoArrayList);
 
         mRecyclerView.setAdapter(myAdapter);
@@ -71,6 +70,15 @@ public class RecyleView extends AppCompatActivity {
             public void onClick(View view) {
                 foodInfoArrayList.add(new FoodInfo(ImageArr[imageStatus], result_userData.getText().toString()));
                 myAdapter.notifyDataSetChanged();
+            }
+        });
+
+        mRecyclerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
             }
         });
     }

@@ -13,12 +13,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -32,9 +39,27 @@ public class MainActivity extends AppCompatActivity {
     //확인완료 버튼
     Button btn_login;
 
+    TextView text_weather1;
+
+    //날씨 변수
+    String temp;
+    String weather;
+
+    // 위치를 알아오기 위한 변수
+    double latitude= 36.0;
+    double longitude =48.0;
+
     //일일 날씨
-    private String url = "http://api.openweathermap.org";
+    private String url = "https://api.openweathermap.org";
     private String key = "1966fce57124a1e39ecef2d1eaeb7c0b";
+    //로그 확인을 위해
+    private static OkHttpClient createOkHttpClient() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        builder.addInterceptor(interceptor);
+        return builder.build();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +74,81 @@ public class MainActivity extends AppCompatActivity {
         btn_test6 = (Button)findViewById(R.id.btn_test6);
         btn_test7 = (Button)findViewById(R.id.btn_test7);
         btn_test8 = (Button)findViewById(R.id.btn_test8);
+
+
+
+        text_weather1 = (TextView)findViewById(R.id.text_weather1);
+
+
+        //서버의 json 응답을 간단하게 변환하도록 해주는 작업
+        Retrofit client = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).client(createOkHttpClient()).build();
+        //인터페이스
+        Weather_Interface interFace = client.create(Weather_Interface.class);
+
+        //Call
+        Call<Repo> call = interFace.get_weather(key,Double.valueOf(latitude), Double.valueOf(longitude));
+        call.enqueue(new Callback<Repo>() {
+            @Override
+            public void onResponse(Call<Repo> call, Response<Repo> response) {
+                if(response.isSuccessful()){
+                    Repo repo = response.body();
+
+                    temp= Math.round(((repo.getMain().getTemp()-273.15)*10)/10.0)+"º";
+                    weather = repo.getWeather().get(0).getMain();
+                    String tempMax = Math.round(((repo.getMain().getTemp_max()-273.15)*10)/10.0)+"";
+                    String tempMin = Math.round(((repo.getMain().getTemp_min()-273.15)*10)/10.0)+"";
+                    text_weather1.setText(temp+ repo.getWeather().get(0).getMain());
+
+//                    now_temp_maxmin_text.setText("최저 "+tempMin+"º");
+//                    now_temp_center_text.setText(" / ");
+//                    now_temp_min_text.setText("최고 "+tempMax+"º");
+
+
+//                    if(repo.getWeather().get(0).getMain().equals("Clouds")){
+//                        Glide.with(MainActivity.this).load(R.drawable.cloud).fitCenter().into(now_temp_img);
+//                        Glide.with(MainActivity.this).load(R.drawable.cloud).fitCenter().into(view4_now_temp_img);
+//
+//                    }
+//                    else if(repo.getWeather().get(0).getMain().equals("Clear")){
+//                        Glide.with(MainActivity.this).load(R.drawable.sun).fitCenter().into(now_temp_img);
+//                        Glide.with(MainActivity.this).load(R.drawable.sun).fitCenter().into(view4_now_temp_img);
+//                    }
+//                    else if(repo.getWeather().get(0).getMain().equals("Rain")){
+//                        Glide.with(MainActivity.this).load(R.drawable.rain).fitCenter().into(now_temp_img);
+//                        Glide.with(MainActivity.this).load(R.drawable.rain).fitCenter().into(view4_now_temp_img);
+//                    }
+//                    else if(repo.getWeather().get(0).getMain().equals("Snow")){
+//                        Glide.with(MainActivity.this).load(R.drawable.snowing).fitCenter().into(now_temp_img);
+//                        Glide.with(MainActivity.this).load(R.drawable.snowing).fitCenter().into(view4_now_temp_img);
+//                    }
+//                    else if(repo.getWeather().get(0).getMain().equals("Mist")){
+//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(now_temp_img);
+//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(view4_now_temp_img);
+//                    }
+//                    else if(repo.getWeather().get(0).getMain().equals("Haze")){
+//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(now_temp_img);
+//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(view4_now_temp_img);
+//                    }
+//                    else if(repo.getWeather().get(0).getMain().equals("Fog")){
+//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(now_temp_img);
+//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(view4_now_temp_img);
+//                    }
+
+
+
+                    // nofication 알람
+//                    nofication_alram();
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Repo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"일일 날씨 에러",Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         text1 = (TextView)findViewById(R.id.text1);
         edit_id = (EditText)findViewById(R.id.edit_id);
