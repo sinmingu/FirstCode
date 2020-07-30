@@ -10,27 +10,21 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -51,9 +45,10 @@ public class MainActivity extends AppCompatActivity {
     EditText edit_id, edit_pw;
     //확인완료 버튼
     Button btn_login;
-
+    // 날씨
     TextView text_weather1;
-
+    //코로나
+    TextView text_corona;
     //날씨 변수
     String temp;
     String weather;
@@ -67,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST_CODE = 100;
     String[] REQUIRED_PERMISSIONS  = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION};
     private static final int GPS_ENABLE_REQUEST_CODE = 2001;
+
+    //코로나19
+    private String covid19_url = "http://openapi.data.go.kr/";
+    private String covid19_key = "FhIbqBYEHWDmIgHDufkWFiRccTmu8Lavedlo%2FnccvmChSLG1QY%2Bd0lQoyYX%2B55JyA34U75DrTvcUt5feJRZ9Ng%3D%3D";
+
 
     //일일 날씨
     private String url = "https://api.openweathermap.org";
@@ -94,6 +94,30 @@ public class MainActivity extends AppCompatActivity {
         btn_test7 = (Button)findViewById(R.id.btn_test7);
         btn_test8 = (Button)findViewById(R.id.btn_test8);
 
+        text_corona = (TextView)findViewById(R.id.text_corona);
+
+        Calendar cal = Calendar.getInstance();
+        final int num = cal.get(Calendar.DAY_OF_WEEK);
+//        String today = weekDay[num];
+        final int num2 = cal.get(Calendar.DAY_OF_WEEK)+1;
+        final int month = cal.get(Calendar.MONTH)+1;
+        String String_month = "";
+        if(month <10){
+            String_month = "0"+month;
+        }
+        else{
+            String_month = String.valueOf(month);
+        }
+        final String num3 = String.valueOf(cal.get(Calendar.YEAR))+String_month+String.valueOf(cal.get(Calendar.DATE));
+//        String today2 = weekDay[num2];
+//        int num3 = cal.get(Calendar.DAY_OF_WEEK)+2;
+//        String today3 = weekDay[num3];
+//        int num4 = cal.get(Calendar.DAY_OF_WEEK)+3;
+//        String today4 = weekDay[num4];
+//        int num5 = cal.get(Calendar.DAY_OF_WEEK)+4;
+//        String today5 = weekDay[num5];
+//        int num6 = cal.get(Calendar.DAY_OF_WEEK)+5;
+//        String today6 = weekDay[num6];
 
         //------------------------ gps 시작
 
@@ -122,9 +146,8 @@ public class MainActivity extends AppCompatActivity {
 
         //----------------- gps 끝 --------------------
 
-
+        //---------------- 날씨 ------------------------
         text_weather1 = (TextView)findViewById(R.id.text_weather1);
-
 
         //서버의 json 응답을 간단하게 변환하도록 해주는 작업
         Retrofit client = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create()).client(createOkHttpClient()).build();
@@ -143,58 +166,65 @@ public class MainActivity extends AppCompatActivity {
                     weather = repo.getWeather().get(0).getMain();
                     String tempMax = Math.round(((repo.getMain().getTemp_max()-273.15)*10)/10.0)+"";
                     String tempMin = Math.round(((repo.getMain().getTemp_min()-273.15)*10)/10.0)+"";
-                    text_weather1.setText(temp+ repo.getWeather().get(0).getMain());
+                    text_weather1.setText(temp+ repo.getWeather().get(0).getMain()+", "+num3);
 
-//                    now_temp_maxmin_text.setText("최저 "+tempMin+"º");
-//                    now_temp_center_text.setText(" / ");
-//                    now_temp_min_text.setText("최고 "+tempMax+"º");
+                }
+            }
+            @Override
+            public void onFailure(Call<Repo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"일일 날씨 에러",Toast.LENGTH_SHORT).show();
+            }
+        });
+        //-------------------------------------코로나----------------------------------
 
+        text_weather1 = (TextView)findViewById(R.id.text_weather1);
 
-//                    if(repo.getWeather().get(0).getMain().equals("Clouds")){
-//                        Glide.with(MainActivity.this).load(R.drawable.cloud).fitCenter().into(now_temp_img);
-//                        Glide.with(MainActivity.this).load(R.drawable.cloud).fitCenter().into(view4_now_temp_img);
-//
-//                    }
-//                    else if(repo.getWeather().get(0).getMain().equals("Clear")){
-//                        Glide.with(MainActivity.this).load(R.drawable.sun).fitCenter().into(now_temp_img);
-//                        Glide.with(MainActivity.this).load(R.drawable.sun).fitCenter().into(view4_now_temp_img);
-//                    }
-//                    else if(repo.getWeather().get(0).getMain().equals("Rain")){
-//                        Glide.with(MainActivity.this).load(R.drawable.rain).fitCenter().into(now_temp_img);
-//                        Glide.with(MainActivity.this).load(R.drawable.rain).fitCenter().into(view4_now_temp_img);
-//                    }
-//                    else if(repo.getWeather().get(0).getMain().equals("Snow")){
-//                        Glide.with(MainActivity.this).load(R.drawable.snowing).fitCenter().into(now_temp_img);
-//                        Glide.with(MainActivity.this).load(R.drawable.snowing).fitCenter().into(view4_now_temp_img);
-//                    }
-//                    else if(repo.getWeather().get(0).getMain().equals("Mist")){
-//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(now_temp_img);
-//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(view4_now_temp_img);
-//                    }
-//                    else if(repo.getWeather().get(0).getMain().equals("Haze")){
-//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(now_temp_img);
-//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(view4_now_temp_img);
-//                    }
-//                    else if(repo.getWeather().get(0).getMain().equals("Fog")){
-//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(now_temp_img);
-//                        Glide.with(MainActivity.this).load(R.drawable.fog).fitCenter().into(view4_now_temp_img);
-//                    }
+        int pageNo = 1;
+        int numOfRows = 10;
+        int startCreateDt = Integer.parseInt(num3);
+        int endCreateDt = Integer.parseInt(num3);
+        String _type = "json";
 
+        //서버의 json 응답을 간단하게 변환하도록 해주는 작업
+        Retrofit Co_client = new Retrofit.Builder().baseUrl(covid19_url).addConverterFactory(GsonConverterFactory.create()).client(createOkHttpClient()).build();
+        //인터페이스
+        Covid19_Interface covid19_interface = Co_client.create(Covid19_Interface.class);
 
+        //Call
+        Call<Covid19_Repo> Covid19_Repo = covid19_interface.get_covid19(covid19_key,pageNo, numOfRows,startCreateDt, endCreateDt, _type);
+        Covid19_Repo.enqueue(new Callback<com.mg.firstcode.Covid19_Repo>() {
+            @Override
+            public void onResponse(Call<com.mg.firstcode.Covid19_Repo> call, Response<com.mg.firstcode.Covid19_Repo> response) {
+                if(response.isSuccessful()){
+                    com.mg.firstcode.Covid19_Repo covid19_Repo = response.body();
 
-                    // nofication 알람
-//                    nofication_alram();
+                    int decideCnt=covid19_Repo.getResponse().getBody().getItems().getItem().getDecideCnt(); // 확진자수
+                    int clearCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getClearCnt(); // 격리 해제수
+                    int accExamCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getAccExamCnt(); // 누적검사수
+                    int examCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getExamCnt(); // 검사진행수
+                    int resutlNegCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getResutlNegCnt(); // 결과음성수
+                    int careCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getCareCnt(); // 치료중 환자수
+                    int deathCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getDeathCnt(); // 사망자수
+
+                    text_corona.setText("확진자수 : "+decideCnt+"\n"+
+                                        "격리해제수 : "+clearCnt+"\n"+
+                                        "누적검사수 : "+accExamCnt+"\n"+
+                                        "검사진행수 : "+examCnt+"\n"+
+                                        "결과음성수 : "+resutlNegCnt+"\n"+
+                                        "치료중 환자수 : "+careCnt+"\n"+
+                                        "사망자수 : "+deathCnt+"\n");
 
 
                 }
             }
 
             @Override
-            public void onFailure(Call<Repo> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"일일 날씨 에러",Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<com.mg.firstcode.Covid19_Repo> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"코로나 데이터 불러오기 실패",Toast.LENGTH_SHORT).show();
             }
         });
 
+        //----------------------------- 버튼 이벤트 지정 -----------------------------
 
         text1 = (TextView)findViewById(R.id.text1);
         edit_id = (EditText)findViewById(R.id.edit_id);
@@ -290,6 +320,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
     // 실습코드 2
     class Thread_Exam1 implements Runnable{
@@ -418,7 +450,27 @@ public class MainActivity extends AppCompatActivity {
             text1.setText(data.getStringExtra("data_result"));
 
         }
+        //-- gps
+        super.onActivityResult(requestCode, resultCode, data);
+
+        switch (requestCode) {
+
+            case GPS_ENABLE_REQUEST_CODE:
+
+                //사용자가 GPS 활성 시켰는지 검사
+                if (checkLocationServicesStatus()) {
+                    if (checkLocationServicesStatus()) {
+
+                        Log.d("@@@", "onActivityResult : GPS 활성화 되있음");
+                        checkRunTimePermission();
+                        return;
+                    }
+                }
+
+                break;
+        }
     }
+
 
     //-------------------------- gps 함수 --------------------------------------
 
@@ -610,5 +662,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //----------------------------- gps 함수 끝 -------------------------
+
+
 
 }

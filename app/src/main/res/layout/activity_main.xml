@@ -114,6 +114,15 @@
                     android:gravity="center"
                     android:layout_height="wrap_content"/>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:id="@+id/text_corona"
+                    android:layout_marginTop="10dp"
+                    android:text="코로나"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"/>
+
+
 
 
             </LinearLayout>
