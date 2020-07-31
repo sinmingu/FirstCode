@@ -231,7 +231,6 @@ public class TextWriter extends AppCompatActivity {
 
             }
         });
-
         btn_end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -402,7 +401,7 @@ public class TextWriter extends AppCompatActivity {
                 }
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(500);
                 } catch (Exception e) {
                     e.getStackTrace();
                 }
@@ -417,117 +416,121 @@ public class TextWriter extends AppCompatActivity {
 
         text_score.setText(score+"");
         if(rnd == 1){
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 2){
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 3){
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 4){
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 5){
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 6){
-            Glide.with(TextWriter.this).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(TextWriter.this).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(TextWriter.this).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(TextWriter.this).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 7){
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 8){
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
         }
         else if(rnd == 9){
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-            Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-            Glide.with(getApplicationContext()).load(R.drawable.duck).fitCenter().into(imageView9);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+            Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+            Glide.with(getApplicationContext()).load(R.drawable.mole).fitCenter().into(imageView9);
+
         }
+
     }
 
     // 이미지 끝
     public void ImageEnd(){
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView1);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView2);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView3);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView4);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView5);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView6);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView7);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView8);
-        Glide.with(getApplicationContext()).load(R.drawable.baseball).fitCenter().into(imageView9);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView1);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView2);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView3);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView4);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView5);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView6);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView7);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView8);
+        Glide.with(getApplicationContext()).load(R.drawable.hole).fitCenter().into(imageView9);
+
     }
+
 
 }

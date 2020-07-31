@@ -1,15 +1,18 @@
 package com.mg.firstcode;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 public class ViewHolderPage extends RecyclerView.ViewHolder {
 
 private TextView tv_title;
-private RelativeLayout rl_layout;
+private ImageView rl_layout;
 
         DataPage data;
 
@@ -24,6 +27,7 @@ private RelativeLayout rl_layout;
 
         tv_title.setText(data.getTitle());
         rl_layout.setBackgroundResource(data.getColor());
+
         }
         }
 

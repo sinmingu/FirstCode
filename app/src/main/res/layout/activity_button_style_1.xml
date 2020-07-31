@@ -11,44 +11,203 @@
         android:layout_width="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_weight="0.9"
-        android:layout_height="wrap_content">
+        android:layout_weight="0.1"
+        android:layout_height="match_parent">
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/pager"
-            android:layout_weight="1"
+            android:layout_weight="0.85"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent" />
 
-        <TextView
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.15"
+            android:visibility="gone"
+            android:id="@+id/Layout_3"
+            android:weightSum="1"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:text="Test"
+                android:visibility="gone"
+                android:textSize="30dp"
+                android:layout_weight="0.8"
+                android:id="@+id/test_text"
+                android:layout_height="match_parent"/>
+
+            <ir.androidexception.datatable.DataTable
+                android:id="@+id/data_table"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                app:header_gravity="center"
+                android:layout_weight="0.2"
+                app:row_gravity="center"
+                app:header_vertical_padding="16dp"
+                app:header_horizontal_padding="0dp"
+                app:row_vertical_padding="16dp"
+                app:header_text_size="12sp"
+                app:row_text_size="12sp"
+                app:row_text_color="#000"
+                app:header_text_color="#000"
+                app:row_background_color="#fff"
+                app:header_background_color="#fff"
+                app:persian_number="false"
+                app:corner_radius="8dp"
+                app:direction="ltr"
+                app:shadow="8dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.15"
+            android:visibility="gone"
+            android:id="@+id/Layout_2"
+            android:weightSum="1"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:id="@+id/location_text"
+                android:visibility="gone"
+                android:layout_height="wrap_content"/>
+
+            <ir.androidexception.datatable.DataTable
+                android:id="@+id/data_table_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                app:header_gravity="center"
+                android:layout_weight="0.2"
+                app:row_gravity="center"
+                app:header_vertical_padding="16dp"
+                app:header_horizontal_padding="0dp"
+                app:row_vertical_padding="16dp"
+                app:header_text_size="12sp"
+                app:row_text_size="12sp"
+                app:row_text_color="#000"
+                app:header_text_color="#000"
+                app:row_background_color="#fff"
+                app:header_background_color="#fff"
+                app:persian_number="false"
+                app:corner_radius="8dp"
+                app:direction="ltr"
+                app:shadow="8dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.15"
+            android:visibility="visible"
+            android:id="@+id/Layout_1"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_height="match_parent"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/covid_image"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:textStyle="bold"
+                android:id="@+id/main_text"
+                android:textSize="17dp"
+                android:textColor="#000000"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.15"
+            android:visibility="gone"
             android:gravity="center"
-            android:textColor="#000000"
-            android:text="1Page"
-            android:textSize="30dp"
-            android:layout_weight="1"
-            android:id="@+id/text_page"
-            android:layout_height="wrap_content"/>
+            android:id="@+id/Layout_4"
+            android:weightSum="1"
+            android:layout_height="match_parent">
 
-        <TextView
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/pet_walk_chart"
+                android:layout_weight="0.3"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_height="match_parent" />
+
+            <ir.androidexception.datatable.DataTable
+                android:id="@+id/data_table_covid"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                app:header_gravity="center"
+                android:layout_weight="0.7"
+                app:row_gravity="center"
+                app:header_vertical_padding="16dp"
+                app:header_horizontal_padding="0dp"
+                app:row_vertical_padding="16dp"
+                app:header_text_size="12sp"
+                app:row_text_size="12sp"
+                app:row_text_color="#000"
+                app:header_text_color="#000"
+                app:row_background_color="#fff"
+                app:header_background_color="#fff"
+                app:persian_number="false"
+                app:corner_radius="8dp"
+                app:direction="ltr"
+                app:shadow="8dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.15"
+            android:visibility="gone"
             android:gravity="center"
-            android:textColor="#000000"
-            android:text="Test"
-            android:textSize="30dp"
-            android:layout_weight="1"
-            android:id="@+id/test_text"
-            android:layout_height="wrap_content"/>
+            android:id="@+id/Layout_5"
+            android:weightSum="1"
+            android:layout_height="match_parent">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:text="미구현 페이지입니다."
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
     <com.lakue.pagingbutton.LakuePagingButton
         android:id="@+id/lpb_buttonlist"
-        android:layout_weight="0.1"
+        android:layout_weight="0.9"
         android:layout_gravity="bottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

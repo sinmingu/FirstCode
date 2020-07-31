@@ -8,6 +8,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -20,8 +23,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -57,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
     double latitude= 36.0;
     double longitude =48.0;
     String address="";
+
+    ImageView img_local;
 
     private GpsTracker gpsTracker;
     private static final int PERMISSIONS_REQUEST_CODE = 100;
@@ -96,9 +104,10 @@ public class MainActivity extends AppCompatActivity {
         btn_test6 = (Button)findViewById(R.id.btn_test6);
         btn_test7 = (Button)findViewById(R.id.btn_test7);
         btn_test8 = (Button)findViewById(R.id.btn_test8);
-        text_btn = (Button)findViewById(R.id.text_btn);
 
-        text_corona = (TextView)findViewById(R.id.text_corona);
+        img_local = (ImageView)findViewById(R.id.img_local);
+
+        Glide.with(getApplicationContext()).load(R.drawable.local).fitCenter().into(img_local);
 
         Calendar cal = Calendar.getInstance();
         final int num = cal.get(Calendar.DAY_OF_WEEK);
@@ -113,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
             String_month = String.valueOf(month);
         }
         final String num3 = String.valueOf(cal.get(Calendar.YEAR))+String_month+String.valueOf(cal.get(Calendar.DATE));
+
+        final String today = String.valueOf(cal.get(Calendar.YEAR)) +". "+String_month + ". "+String.valueOf(cal.get(Calendar.DATE));
 //        String today2 = weekDay[num2];
 //        int num3 = cal.get(Calendar.DAY_OF_WEEK)+2;
 //        String today3 = weekDay[num3];
@@ -167,99 +178,30 @@ public class MainActivity extends AppCompatActivity {
                     Repo repo = response.body();
 
                     temp= Math.round(((repo.getMain().getTemp()-273.15)*10)/10.0)+"º";
+
                     weather = repo.getWeather().get(0).getMain();
-                    String tempMax = Math.round(((repo.getMain().getTemp_max()-273.15)*10)/10.0)+"";
-                    String tempMin = Math.round(((repo.getMain().getTemp_min()-273.15)*10)/10.0)+"";
-                    text_weather1.setText(temp+ repo.getWeather().get(0).getMain()+", "+num3);
+
+                    if (weather.equals("Clouds")) {
+                        weather = "구름";
+                    } else if (weather.equals("Clear")) {
+                        weather = "맑음";
+                    } else if (weather.equals("Rain")) {
+                        weather = "비";
+                    } else if (weather.equals("Snow")) {
+                        weather = "눈";
+                    } else if(weather.equals("Haze")){
+                        weather = "안개";
+                    } else if(weather.equals("Mist")){
+                        weather = "안개";
+                    }
+
+                    text_weather1.setText(today+"\n\n현재기온 - "+temp+ " "+weather);
 
                 }
             }
             @Override
             public void onFailure(Call<Repo> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"일일 날씨 에러",Toast.LENGTH_SHORT).show();
-            }
-        });
-        //-------------------------------------코로나----------------------------------
-
-        text_weather1 = (TextView)findViewById(R.id.text_weather1);
-
-        int pageNo = 1;
-        int numOfRows = 10;
-        int startCreateDt = Integer.parseInt(num3);
-        int endCreateDt = Integer.parseInt(num3);
-        String _type = "json";
-
-        //서버의 json 응답을 간단하게 변환하도록 해주는 작업
-        Retrofit Co_client = new Retrofit.Builder().baseUrl(covid19_url).addConverterFactory(GsonConverterFactory.create()).client(createOkHttpClient()).build();
-        //인터페이스
-        Covid19_Interface covid19_interface = Co_client.create(Covid19_Interface.class);
-
-        //Call
-        Call<Covid19_Repo> Covid19_Repo = covid19_interface.get_covid19(covid19_key,pageNo, numOfRows,startCreateDt, endCreateDt, _type);
-        Covid19_Repo.enqueue(new Callback<com.mg.firstcode.Covid19_Repo>() {
-            @Override
-            public void onResponse(Call<Covid19_Repo> call, Response<com.mg.firstcode.Covid19_Repo> response) {
-                if(response.isSuccessful()){
-                    com.mg.firstcode.Covid19_Repo covid19_Repo = response.body();
-
-                    int decideCnt=covid19_Repo.getResponse().getBody().getItems().getItem().getDecideCnt(); // 확진자수
-                    int clearCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getClearCnt(); // 격리 해제수
-                    int accExamCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getAccExamCnt(); // 누적검사수
-                    int examCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getExamCnt(); // 검사진행수
-                    int resutlNegCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getResutlNegCnt(); // 결과음성수
-                    int careCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getCareCnt(); // 치료중 환자수
-                    int deathCnt = covid19_Repo.getResponse().getBody().getItems().getItem().getDeathCnt(); // 사망자수
-
-                    text_corona.setText("확진자수 : "+decideCnt+"\n"+
-                                        "격리해제수 : "+clearCnt+"\n"+
-                                        "누적검사수 : "+accExamCnt+"\n"+
-                                        "검사진행수 : "+examCnt+"\n"+
-                                        "결과음성수 : "+resutlNegCnt+"\n"+
-                                        "치료중 환자수 : "+careCnt+"\n"+
-                                        "사망자수 : "+deathCnt+"\n");
-
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<com.mg.firstcode.Covid19_Repo> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"코로나 데이터 불러오기 실패",Toast.LENGTH_SHORT).show();
-            }
-        });
-        text_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //-------------------------------------지역코로나----------------------------------
-                int pageNo = 1;
-                int numOfRows = 10;
-                int startCreateDt = Integer.parseInt(num3);
-                int endCreateDt = Integer.parseInt(num3);
-                String _type = "json";
-                //서버의 json 응답을 간단하게 변환하도록 해주는 작업
-                Retrofit Lo_client = new Retrofit.Builder().baseUrl(location_url).addConverterFactory(GsonConverterFactory.create()).client(createOkHttpClient()).build();
-                //인터페이스
-                Location_Interface location_interface = Lo_client.create(Location_Interface.class);
-
-                //Call
-                Call<Location_Repo> location_Repo = location_interface.get_Location(location_key,pageNo, numOfRows,startCreateDt, endCreateDt, _type);
-                location_Repo.enqueue(new Callback<Location_Repo>() {
-                    @Override
-                    public void onResponse(Call<Location_Repo> call, Response<Location_Repo> response) {
-                        if(response.isSuccessful()){
-                            Location_Repo repo = response.body();
-                            int defCnt = repo.getResponse().getBody().getItems().getItem().get(0).getDefCnt();
-
-                            Toast.makeText(getApplicationContext(), "cc", Toast.LENGTH_SHORT).show();
-
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Location_Repo> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(),"지역 데이터 불러오기 실패",Toast.LENGTH_SHORT).show();
-                    }
-                });
             }
         });
 
@@ -288,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                thread.start();
+//                thread.start();
 
             }
         });
@@ -357,6 +299,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        nofication_alram();
 
     }
 
@@ -699,7 +643,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //----------------------------- gps 함수 끝 -------------------------
+    //알람 매니저
+    public void nofication_alram(){
 
+        Intent intent = new Intent(MainActivity.this, AlarmReceiver_nofi.class);
+        intent.putExtra("address",address);
+        intent.putExtra("temp",temp);
+        intent.putExtra("weather",weather);
+        intent.putExtra("temp2","dada");
+
+        PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, 0);
+
+
+        // 알람을 받을 시간을 5초 뒤로 설정
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.setTimeInMillis(System.currentTimeMillis());
+
+//        calendar.add(Calendar.SECOND, 5);
+
+        calendar.set(Calendar.HOUR_OF_DAY, 12); // calendar.set(Calendar.HOUR_OF_DAY, 시간(int)); 저녁10시->22시
+
+        calendar.set(Calendar.MINUTE, 59); //calendar.set(Calendar.MINUTE, 분(int));
+
+        calendar.set(Calendar.SECOND, 59);
+
+//      calendar.set(calendar.get(Calendar.HOUR), calendar.get(Calendar.MINUTE), calendar.get(Calendar.DATE), 18, 57, 0);
+
+
+        // 알람 매니저에 알람을 등록
+
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+//        am.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), sender);
+
+        am.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 200000,sender);
+
+
+    }
 
 
 }

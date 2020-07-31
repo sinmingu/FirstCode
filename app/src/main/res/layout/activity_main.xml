@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#3995d3"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     
@@ -19,10 +20,10 @@
 
             <TextView
                 android:layout_width="match_parent"
-                android:text="Coding Study"
+                android:text="OCUBE-ENG\nCoding Study"
                 android:id="@+id/text1"
-                android:textColor="#000000"
-                android:background="#ffffff"
+                android:textColor="#ffffff"
+                android:background="#3995d3"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_weight="0.3"
@@ -31,108 +32,53 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:id="@+id/img_local"
+                    android:layout_height="30dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/location_here"
+                    android:text="위치"
+                    android:textColor="#ffffff"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:id="@+id/text_weather1"
+                android:layout_marginTop="10dp"
+                android:text="온도"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:orientation="vertical"
                 android:paddingLeft="20dp"
                 android:layout_weight="0.7"
+                android:gravity="bottom"
                 android:paddingRight="20dp"
                 android:layout_height="wrap_content">
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="첫번째 보낼값 "
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"/>
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:id="@+id/edit_id"
-                        android:hint="입력"
-                        android:textColor="#000000"
-                        android:textSize="13dp"
-                        android:gravity="center"
-                        android:layout_weight="0.7"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_weight="0.3"
-                        android:text="두번째 보낼값"
-                        android:gravity="center"
-                        android:textColor="#000000"
-                        android:textStyle="bold"
-                        android:layout_height="wrap_content"/>
-
-                    <EditText
-                        android:layout_width="wrap_content"
-                        android:id="@+id/edit_pw"
-                        android:hint="입력"
-                        android:textSize="13dp"
-                        android:layout_weight="0.7"
-                        android:textColor="#000000"
-                        android:gravity="center"
-                        android:layout_height="wrap_content"/>
-
-                </LinearLayout>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:background="#ffffff"
-                    android:text="Data Intent"
-                    android:layout_marginTop="10dp"
-                    android:id="@+id/btn_login"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:id="@+id/location_here"
-                    android:layout_marginTop="10dp"
-                    android:text="위치"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:id="@+id/text_weather1"
-                    android:layout_marginTop="10dp"
-                    android:text="온도"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:id="@+id/text_corona"
-                    android:layout_marginTop="10dp"
-                    android:text="코로나"
-                    android:gravity="center"
-                    android:layout_height="wrap_content"/>
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/text_btn"/>
 
 
 
 
             </LinearLayout>
-
-
 
         </LinearLayout>
 
@@ -140,8 +86,95 @@
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_weight="0.2"
+            android:background="#ffffff"
             android:gravity="bottom"
             android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/btn_write_circle"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.5"
+                        android:text="First data "
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/edit_id"
+                        android:hint="입력"
+                        android:textColorHint="#ffffff"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/btn_circle"
+                        android:textSize="13dp"
+                        android:gravity="center"
+                        android:layout_weight="0.5"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_weight="0.5"
+                        android:text="Second data"
+                        android:gravity="center"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:id="@+id/edit_pw"
+                        android:hint="입력"
+                        android:textSize="13dp"
+                        android:layout_weight="0.5"
+                        android:textColorHint="#ffffff"
+                        android:textColor="#ffffff"
+                        android:background="@drawable/btn_circle"
+                        android:gravity="center"
+                        android:layout_height="wrap_content"/>
+
+                </LinearLayout>
+
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:background="@drawable/btn_rack"
+                    android:text="전송"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/btn_login"
+                    android:layout_height="wrap_content"/>
+
+
+            </LinearLayout>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -151,19 +184,21 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
                     android:layout_weight="1"
                     android:text="핸들러"
                     android:id="@+id/btn_test1"
+                    android:textSize="12dp"
                     android:gravity="center"
                     android:textStyle="bold" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
                     android:layout_weight="1"
                     android:text="쓰레드"
+                    android:textSize="12dp"
                     android:id="@+id/btn_test2"
                     android:gravity="center"
                     android:textStyle="bold" />
@@ -171,20 +206,22 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
                     android:layout_weight="1"
                     android:text="리시버"
                     android:id="@+id/btn_test3"
+                    android:textSize="12dp"
                     android:gravity="center"
                     android:textStyle="bold" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
                     android:layout_weight="1"
                     android:text="서비스"
                     android:id="@+id/btn_test4"
+                    android:textSize="12dp"
                     android:gravity="center"
                     android:textStyle="bold" />
 
@@ -198,9 +235,10 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
                     android:layout_weight="1"
                     android:text="알람매니저"
+                    android:textSize="12dp"
                     android:id="@+id/btn_test5"
                     android:gravity="center"
                     android:textStyle="bold" />
@@ -208,9 +246,10 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
                     android:layout_weight="1"
-                    android:text="이미지"
+                    android:text="두더지"
+                    android:textSize="12dp"
                     android:id="@+id/btn_test6"
                     android:gravity="center"
                     android:textStyle="bold" />
@@ -218,19 +257,21 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
                     android:layout_weight="1"
                     android:text="리사이클뷰"
                     android:id="@+id/btn_test7"
                     android:gravity="center"
+                    android:textSize="12dp"
                     android:textStyle="bold" />
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#ffffff"
+                    android:background="@drawable/btn_rack"
+                    android:textSize="12dp"
                     android:layout_weight="1"
-                    android:text="뷰"
+                    android:text="코로나"
                     android:id="@+id/btn_test8"
                     android:gravity="center"
                     android:textStyle="bold" />
